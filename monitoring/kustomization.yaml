@@ -26,6 +26,7 @@ patches:
             resources:
               requests:
                 storage: 40Gi
+      replicas: 1
 - patch: |-
     apiVersion: apps/v1
     kind: Deployment
