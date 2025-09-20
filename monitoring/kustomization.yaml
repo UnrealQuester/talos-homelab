@@ -3,6 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - https://github.com/prometheus-operator/kube-prometheus
+- grafana-pvc.yaml
 patches:
 - patch: |-
     apiVersion: v1
@@ -11,3 +12,31 @@ patches:
       name: monitoring
       labels:
         pod-security.kubernetes.io/enforce: privileged
+- patch: |-
+    apiVersion: monitoring.coreos.com/v1
+    kind: Prometheus
+    metadata:
+      name: k8s
+      namespace: monitoring
+    spec:
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: local-path
+            resources:
+              requests:
+                storage: 40Gi
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: grafana
+      namespace: monitoring
+    spec:
+      template:
+        spec:
+          volumes:
+          - name: grafana-storage
+            persistentVolumeClaim:
+              claimName: grafana-storage
+            emptyDir: null
