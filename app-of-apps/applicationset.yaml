@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - application: storage
+        wave: "1"
+      - application: monitoring
+        wave: "2"
+        serversideApply: "true"
+  template:
+    metadata:
+      name: "{{.application}}"
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+      annotations:
+        argocd.argoproj.io/sync-wave: "{{.wave}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/UnrealQuester/talos-homelab.git
+        targetRevision: HEAD
+        path: "{{.application}}"
+      destination:
+        server: https://kubernetes.default.svc
+      syncPolicy:
+        syncOptions:
+          - 'ServerSideApply={{dig "serversideApply" "false" .}}'
+        automated:
+          prune: true
+          selfHeal: true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            maxDuration: 3m0s
+            factor: 2
