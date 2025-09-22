@@ -26,6 +26,7 @@ spec:
         - resources-finalizer.argocd.argoproj.io
       annotations:
         argocd.argoproj.io/sync-wave: "{{.wave}}"
+        argocd.argoproj.io/compare-options: 'ServerSideDiff={{dig "serversideApply" "false" .}}'
     spec:
       project: default
       source:
