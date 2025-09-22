@@ -11,6 +11,9 @@ spec:
       elements:
       - application: storage
         wave: "1"
+      - application: ingress
+        wave: "1"
+        serversideApply: "true"
       - application: monitoring
         wave: "2"
         serversideApply: "true"
