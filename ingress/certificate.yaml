@@ -4,9 +4,12 @@ metadata:
  name: selfsigned-tls
  namespace: nginx-gateway
 spec:
- secretName: tls-key-pair
- isCA: true
- issuerRef:
-   name: selfsigned-cluster-issuer
-   kind: ClusterIssuer
- commonName: "192.168.0.169"
+  secretName: tls-key-pair
+  isCA: true
+  issuerRef:
+    name: selfsigned-cluster-issuer
+    kind: ClusterIssuer
+  ipAddresses:
+  - 192.168.0.169
+  dnsNames:
+  - homelab.local
