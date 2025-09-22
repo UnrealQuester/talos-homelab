@@ -11,11 +11,13 @@ spec:
       elements:
       - application: storage
         wave: "1"
-      - application: ingress
+      - application: certmanager
         wave: "1"
+      - application: ingress
+        wave: "2"
         serversideApply: "true"
       - application: monitoring
-        wave: "2"
+        wave: "3"
         serversideApply: "true"
   template:
     metadata:

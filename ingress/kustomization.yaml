@@ -7,6 +7,7 @@ resources:
 - https://raw.githubusercontent.com/nginx/nginx-gateway-fabric/v2.1.1/deploy/default/deploy.yaml
 - https://raw.githubusercontent.com/metallb/metallb/v0.15.2/config/manifests/metallb-native.yaml
 - addresspool.yaml
+- certificate.yaml
 - gateway.yaml
 - httproute.yaml
 patches:
