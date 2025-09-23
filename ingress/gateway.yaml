@@ -5,6 +5,9 @@ metadata:
   namespace: nginx-gateway
 spec:
   gatewayClassName: nginx
+  infrastructure:
+    annotations:
+      external-mdns.blakecovarrubias.com/hostnames: homelab
   listeners:
   - name: http
     port: 80
