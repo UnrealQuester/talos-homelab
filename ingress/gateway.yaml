@@ -8,6 +8,7 @@ spec:
   infrastructure:
     annotations:
       external-mdns.blakecovarrubias.com/hostnames: homelab
+      metallb.io/ip-allocated-from-pool: homelab-pool
   listeners:
   - name: http
     port: 80
