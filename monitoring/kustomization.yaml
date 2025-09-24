@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - https://github.com/prometheus-operator/kube-prometheus
 - grafana-pvc.yaml
+- httproute.yaml
 patches:
 - patch: |-
     apiVersion: v1
@@ -41,3 +42,18 @@ patches:
             persistentVolumeClaim:
               claimName: grafana-storage
             emptyDir: null
+- patch: |-
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: grafana-config
+      namespace: monitoring
+    stringData:
+      grafana.ini: |
+        [server]
+        root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana
+        serve_from_sub_path = true
+        enable_gzip = true
+        [date_formats]
+        default_timezone = browser
+        user_browser_locale = true
