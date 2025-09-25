@@ -8,3 +8,5 @@ helmCharts:
     releaseName: victoria-logs
     namespace: logging
     valuesFile: victoria-logs-values.yaml
+resources:
+- namespace.yaml
