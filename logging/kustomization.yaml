@@ -1,6 +1,7 @@
 # kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: logging
 helmCharts:
   - name: victoria-logs-single
     repo: https://victoriametrics.github.io/helm-charts/
@@ -8,6 +9,12 @@ helmCharts:
     releaseName: victoria-logs
     namespace: logging
     valuesFile: victoria-logs-values.yaml
+  - name: victoria-logs-collector
+    repo: https://victoriametrics.github.io/helm-charts/
+    version: 0.0.5
+    releaseName: victoria-collector
+    namespace: logging
+    valuesFile: victoria-collector-values.yaml
 resources:
 - namespace.yaml
 - httproute.yaml
