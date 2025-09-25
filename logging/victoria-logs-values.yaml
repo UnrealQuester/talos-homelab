@@ -1,0 +1,9 @@
+server:
+  retentionPeriod: 7d
+  # -- Data retention max capacity. Default unit is GiB. See these [docs](https://docs.victoriametrics.com/victorialogs/#retention-by-disk-space-usage)
+  # retentionDiskSpaceUsage: ""
+
+  persistentVolume:
+    size: 20Gi
+
+

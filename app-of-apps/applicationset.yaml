@@ -21,6 +21,9 @@ spec:
       - application: monitoring
         wave: "3"
         serversideApply: "true"
+      - application: logging
+        wave: "3"
+        serversideApply: "true"
   template:
     metadata:
       name: "{{.application}}"

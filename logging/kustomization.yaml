@@ -1,0 +1,10 @@
+# kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+helmCharts:
+  - name: vm/victoria-logs-single
+    repo: https://victoriametrics.github.io/helm-charts/
+    version: 0.11.10
+    releaseName: victoria-logs
+    namespace: logging
+    valuesFile: victoria-logs-values.yaml
