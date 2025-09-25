@@ -25,4 +25,4 @@ spec:
       urlRewrite:
         path:
           type: ReplacePrefixMatch
-          replacePrefixMatch: /select/vmui
+          replacePrefixMatch: /
