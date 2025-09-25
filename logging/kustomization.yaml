@@ -10,3 +10,4 @@ helmCharts:
     valuesFile: victoria-logs-values.yaml
 resources:
 - namespace.yaml
+- httproute.yaml
