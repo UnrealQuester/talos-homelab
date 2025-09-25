@@ -6,4 +6,5 @@ server:
   persistentVolume:
     size: 20Gi
 
-
+vector:
+  enabled: true

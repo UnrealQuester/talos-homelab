@@ -9,12 +9,12 @@ helmCharts:
     releaseName: victoria-logs
     namespace: logging
     valuesFile: victoria-logs-values.yaml
-  - name: victoria-logs-collector
-    repo: https://victoriametrics.github.io/helm-charts/
-    version: 0.0.5
-    releaseName: victoria-collector
-    namespace: logging
-    valuesFile: victoria-collector-values.yaml
+  # - name: victoria-logs-collector
+  #   repo: https://victoriametrics.github.io/helm-charts/
+  #   version: 0.0.5
+  #   releaseName: victoria-collector
+  #   namespace: logging
+  #   valuesFile: victoria-collector-values.yaml
 resources:
 - namespace.yaml
 - httproute.yaml
