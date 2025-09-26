@@ -6,5 +6,13 @@ server:
   persistentVolume:
     size: 20Gi
 
+  extraArgs:
+    envflag.enable: true
+    envflag.prefix: VM_
+    loggerFormat: json
+    httpListenAddr: :9428
+    http.shutdownDelay: 15s
+    syslog.listenAddr.tcp: :514
+
 vector:
   enabled: true
