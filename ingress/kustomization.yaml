@@ -17,6 +17,5 @@ patches:
     metadata:
       name: nginx-gateway-cert-generator
       namespace: nginx-gateway
-      annotations:
-        argocd.argoproj.io/hook: PostSync
-        argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    spec:
+      ttlSecondsAfterFinished: null
