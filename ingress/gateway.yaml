@@ -7,7 +7,7 @@ spec:
   gatewayClassName: nginx
   infrastructure:
     annotations:
-      external-mdns.blakecovarrubias.com/hostnames: homelab
+      external-mdns.blakecovarrubias.com/hostnames: homelab, tavern, argocd, grafana, victoria
       metallb.io/ip-allocated-from-pool: homelab-pool
   listeners:
   - name: http

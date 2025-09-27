@@ -5,17 +5,15 @@ metadata:
   name: argocd
   namespace: argocd
 spec:
+  hostnames:
+  - argocd.local
   parentRefs:
   - name: homelab
     namespace: nginx-gateway
     group: gateway.networking.k8s.io	
     kind: Gateway
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /argocd
-    backendRefs:
+  - backendRefs:
     - name: argocd-server
       port: 80
       group: ''	
@@ -27,6 +25,8 @@ metadata:
   name: argocd-grpc
   namespace: argocd
 spec:
+  hostnames:
+  - argocd.local
   parentRefs:
   - name: homelab
     namespace: nginx-gateway

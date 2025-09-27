@@ -34,7 +34,6 @@ spec:
           subPath: config.yaml
         - mountPath: /home/node/app/data
           name: tavern-data
-          readOnly: false
       volumes:
       - name: tavern-config
         configMap:
@@ -63,6 +62,8 @@ kind: HTTPRoute
 metadata:
   name: tavern
 spec:
+  hostnames:
+    - tavern.local
   parentRefs:
   - name: homelab
     namespace: nginx-gateway
@@ -72,15 +73,9 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /tavern
+        value: /
     backendRefs:
     - name: tavern
       port: 8000
       group: ''	
       kind: Service
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /

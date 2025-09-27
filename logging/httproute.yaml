@@ -5,24 +5,16 @@ metadata:
   name: victoria-logs
   namespace: logging
 spec:
+  hostnames:
+  - victoria.local
   parentRefs:
   - name: homelab
     namespace: nginx-gateway
     group: gateway.networking.k8s.io	
     kind: Gateway
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /victorialogs
-    backendRefs:
+  - backendRefs:
     - name: victoria-logs-victoria-logs-single-server
       port: 9428
       group: ''	
       kind: Service
-    filters:
-    - type: URLRewrite
-      urlRewrite:
-        path:
-          type: ReplacePrefixMatch
-          replacePrefixMatch: /
