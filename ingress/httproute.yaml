@@ -19,26 +19,26 @@ spec:
       group: ''	
       kind: Service
 ---
-apiVersion: gateway.networking.k8s.io/v1
-kind: GRPCRoute
-metadata:
-  name: argocd-grpc
-  namespace: argocd
-spec:
-  hostnames:
-  - argocd.local
-  parentRefs:
-  - name: homelab
-    namespace: nginx-gateway
-    group: gateway.networking.k8s.io	
-    kind: Gateway
-  rules:
-  - backendRefs:
-    - name: argocd-server
-      port: 80
-      group: ''	
-      kind: Service
----
+# apiVersion: gateway.networking.k8s.io/v1
+# kind: GRPCRoute
+# metadata:
+#   name: argocd-grpc
+#   namespace: argocd
+# spec:
+#   hostnames:
+#   - argocd.local
+#   parentRefs:
+#   - name: homelab
+#     namespace: nginx-gateway
+#     group: gateway.networking.k8s.io	
+#     kind: Gateway
+#   rules:
+#   - backendRefs:
+#     - name: argocd-server
+#       port: 80
+#       group: ''	
+#       kind: Service
+# ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
