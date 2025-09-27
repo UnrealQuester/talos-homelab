@@ -16,10 +16,10 @@ spec:
       containers:
       - name: tavern
         image:  ghcr.io/sillytavern/sillytavern:1.13.4
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 8000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
         resources:
           limits:
             memory: 1Gi
