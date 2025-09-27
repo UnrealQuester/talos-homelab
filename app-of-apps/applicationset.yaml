@@ -24,6 +24,8 @@ spec:
       - application: logging
         wave: "3"
         serversideApply: "true"
+      - application: tavern
+        wave: "3"
   template:
     metadata:
       name: "{{.application}}"
