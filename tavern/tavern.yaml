@@ -18,8 +18,9 @@ spec:
         image:  ghcr.io/sillytavern/sillytavern:1.13.4
         readinessProbe:
           httpGet:
-            path: /
+            path: /csrf-token
             port: 8000
+          initialDelaySeconds: 5
         resources:
           limits:
             memory: 1Gi
