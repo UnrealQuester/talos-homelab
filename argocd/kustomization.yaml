@@ -27,3 +27,7 @@ patches:
         app.kubernetes.io/part-of: argocd
     data:
       kustomize.buildOptions: --enable-helm
+      resource.customizations.ignoreDifferences.admissionregistration.k8s.io_MutatingWebhookConfiguration:
+        |
+        jqPathExpressions:
+        - '.webhooks[]?.clientConfig.caBundle'
