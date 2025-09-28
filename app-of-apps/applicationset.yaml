@@ -13,6 +13,8 @@ spec:
         wave: "1"
       - application: certmanager
         wave: "1"
+      - application: secrets
+        wave: "2"
       - application: mdns
         wave: "2"
       - application: ingress
