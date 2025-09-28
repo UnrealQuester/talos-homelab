@@ -15,6 +15,7 @@ spec:
         wave: "1"
       - application: secrets
         wave: "2"
+        serversideApply: "true"
       - application: mdns
         wave: "2"
       - application: ingress
