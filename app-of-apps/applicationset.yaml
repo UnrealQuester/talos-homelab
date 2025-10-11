@@ -29,6 +29,8 @@ spec:
         serversideApply: "true"
       - application: tavern
         wave: "3"
+      - application: mariadb
+        wave: "3"
   template:
     metadata:
       name: "{{.application}}"
