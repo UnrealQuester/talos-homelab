@@ -1,3 +1,4 @@
+---
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
@@ -10,6 +11,10 @@ spec:
       external-mdns.blakecovarrubias.com/hostnames: homelab, tavern, argocd, grafana, victoria
       metallb.io/ip-allocated-from-pool: homelab-pool
       metallb.io/allow-shared-ip: "homelab-pool"
+    parametersRef:
+      group: gateway.nginx.org
+      kind: NginxProxy
+      name: ngf-proxy-config
   listeners:
   - name: http
     port: 80
@@ -29,3 +34,13 @@ spec:
       - name: tls-key-pair
         kind: Secret
         namespace: nginx-gateway
+---
+apiVersion: gateway.nginx.org/v1alpha2
+kind: NginxProxy
+metadata:
+  name: ngf-proxy-config
+  namespace: nginx-gateway
+spec:
+  kubernetes:
+    service:
+      externalTrafficPolicy: "Cluster"
