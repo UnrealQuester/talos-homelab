@@ -48,7 +48,7 @@ metadata:
 type: Opaque
 data:
   # s3cre3t!
-  password: czNjcmUzdCEK
+  password: czNjcmUzdCE=
 ---
 apiVersion: k8s.mariadb.com/v1alpha1
 kind: Grant
@@ -75,7 +75,7 @@ metadata:
 type: Opaque
 data:
   # maxscale_password
-  password: bWF4c2NhbGVfcGFzc3dvcmQK
+  password: bWF4c2NhbGVfcGFzc3dvcmQ=
 ---
 apiVersion: k8s.mariadb.com/v1alpha1
 kind: User
