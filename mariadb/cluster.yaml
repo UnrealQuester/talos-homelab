@@ -25,6 +25,49 @@ spec:
   requeueInterval: 10h
   retryInterval: 30s
 ---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: User
+metadata:
+  name: mike
+spec:
+  mariaDbRef:
+    name: mariadb
+  passwordSecretKeyRef:
+    name: mike
+    key: password
+  maxUserConnections: 100
+  host: "%"
+  cleanupPolicy: Delete
+  requeueInterval: 10h
+  retryInterval: 30s
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mike
+type: Opaque
+data:
+  # s3cre3t!
+  password: czNjcmUzdCEK
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: Grant
+metadata:
+  name: mike
+spec:
+  mariaDbRef:
+    name: mariadb
+  privileges:
+  - "ALL PRIVILEGES"
+  database: "test"
+  table: "*"
+  username: maxscale_user
+  grantOption: true
+  host: "%"
+  cleanupPolicy: Delete
+  requeueInterval: 10h
+  retryInterval: 30s
+---
 apiVersion: v1
 kind: Secret
 metadata:
