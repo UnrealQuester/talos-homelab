@@ -90,7 +90,7 @@ spec:
   privileges:
   - "SELECT"
   database: "mysql"
-  table: "global_priv"
+  table: "*"
   username: maxscale_user
   grantOption: true
   host: "%"
