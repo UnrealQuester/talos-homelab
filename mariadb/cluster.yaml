@@ -61,7 +61,7 @@ spec:
   - "ALL PRIVILEGES"
   database: "test"
   table: "*"
-  username: maxscale_user
+  username: mike
   grantOption: true
   host: "%"
   cleanupPolicy: Delete
