@@ -140,3 +140,34 @@ spec:
   cleanupPolicy: Delete
   requeueInterval: 10h
   retryInterval: 30s
+---
+apiVersion: k8s.mariadb.com/v1alpha1
+kind: SqlJob
+metadata:
+  name: test
+spec:
+  mariaDbRef:
+    name: mariadb
+  inheritMetadata:
+    annotations:
+      database.myorg.io: mariadb
+  serviceAccountName: mike
+  username: mike
+  passwordSecretKeyRef:
+    name: mike
+    key: password
+  tlsCASecretRef:
+    name: mariadb-ca-bundle
+  tlsClientCertSecretRef:
+    name: mariadb-client-cert
+  database: test
+  sql: |
+    CREATE TABLE IF NOT EXISTS test (
+      id bigint PRIMARY KEY AUTO_INCREMENT,
+      test varchar(255) NOT NULL,
+      UNIQUE KEY name__unique_idx (test)
+    );
+    INSERT INTO test(test) VALUES('test1') 
+      ON DUPLICATE KEY UPDATE id=id;
+    INSERT INTO test(test) VALUES('test2') 
+      ON DUPLICATE KEY UPDATE id=id;
