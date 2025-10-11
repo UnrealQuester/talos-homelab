@@ -11,6 +11,12 @@ metadata:
 spec:
   storage:
     ephemeral: true
+  service:
+    type: LoadBalancer
+    metadata:
+      annotations:
+        metallb.io/allow-shared-ip: "homelab-pool"
+    loadBalancerIP: 192.168.0.169
 ---
 apiVersion: k8s.mariadb.com/v1alpha1
 kind: Database
