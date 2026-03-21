@@ -31,6 +31,7 @@ spec:
         wave: "3"
       - application: mariadb
         wave: "3"
+        namespace: mariadb-operator
   template:
     metadata:
       name: "{{.application}}"
@@ -47,6 +48,7 @@ spec:
         path: "{{.application}}"
       destination:
         server: https://kubernetes.default.svc
+        namespace: '{{dig "namespace" "" .}}'
       syncPolicy:
         syncOptions:
           - 'ServerSideApply={{dig "serversideApply" "false" .}}'
