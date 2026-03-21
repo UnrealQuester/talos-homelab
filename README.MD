@@ -1,1 +1,1 @@
-kubectl apply -k argocd/
+kubectl apply --server-side --force-conflicts -k argocd/
